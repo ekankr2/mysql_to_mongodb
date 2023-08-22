@@ -1,19 +1,14 @@
-import mysql.connector
+from core.database import mysql_client
 
-mysqldb = mysql.connector.connect(
-    host="localhost",
-    database="database",
-    user="admin",
-    password="password"
-)
+mysql_client.execute("SELECT * FROM usim_registration where usim_registration.reception_status != '작성중' LIMIT 10;")
+myresult = mysql_client.fetchall()
 
-mycursor = mysqldb.cursor(dictionary=True)
-mycursor.execute("SELECT * FROM phone_plan;")
-myresult = mycursor.fetchall()
+for result in myresult:
+    print(result)
 
 # you can modify data like this
 modified_data = [{k: v for k, v in d.items() if k != 'table_id'} for d in myresult]
 
-print(modified_data)
+# print(modified_data)
 
-print(myresult)
+# print(myresult)
