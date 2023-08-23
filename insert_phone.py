@@ -9,11 +9,10 @@ def main():
         mysql_client.execute("SELECT * FROM phone;")
         myresult = mysql_client.fetchall()
 
-        modified_data = [
-            {k: v for k, v in d.items() if k != 'phone_id'} for d in myresult
-        ]
+        for result in myresult:
+            del result["phone_id"]
 
-        result = phone_collection.insert_many(modified_data)
+        result = phone_collection.insert_many(myresult)
         print(f"Inserted document IDs: {result.inserted_ids}")
 
     except Exception as e:
