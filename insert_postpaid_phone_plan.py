@@ -28,7 +28,7 @@ def main():
                 result['data'] = dict({'default': 0, 'everyday': float(everyday),
                                        'additional_speed_limit': additional_data_speed})
                 result['promotion_duration'] = int(result['promotion_duration']) if result['promotion_duration'] else None
-                del result['phone_plan_id']
+                # del result['phone_plan_id']
                 del result['daily_deduction']
                 del result['prepaid_postpaid']
                 del result['prepaid_type']
@@ -51,7 +51,7 @@ def main():
             result['data'] = dict({'default': float(data[0]), 'everyday': everyday,
                                    'additional_speed_limit': additional_data_speed})
 
-            del result['phone_plan_id']
+            # del result['phone_plan_id']
             del result['daily_deduction']
             del result['prepaid_postpaid']
             del result['prepaid_type']
