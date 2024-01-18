@@ -10,6 +10,7 @@ def main():
         myresult = mysql_client.fetchall()
 
         for result in myresult:
+            result["partner_id"] = result["partner_company_id"]
             del result["partner_company_id"]
             del result["login_id"]
             del result["password"]
