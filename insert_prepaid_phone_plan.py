@@ -9,10 +9,12 @@ def main():
         mysql_client.execute("SELECT * FROM phone_plan where prepaid_postpaid = '선불';")
         myresult = mysql_client.fetchall()
 
-        for result in myresult:
+        for index, result in enumerate(myresult):
             data = str(result['data'])
             voice = str(result['voice'])
             everyday = None
+            del result['phone_plan_id']
+            result['phone_plan_id'] = index + 1
 
             if '/일' in data:
                 if '무제한' in voice:
